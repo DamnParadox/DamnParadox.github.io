@@ -221,7 +221,7 @@ export default {
   <div class="loading" v-if="isLoad">
     loading...{{ loadtime/2 }}%
   </div>
-  <div class="view-box" ref="viewBox" v-show="!isLoad" :style="{'opacity':isLoad?'0':'1'}">
+  <div class="view-box" ref="viewBox">
     <div class="main-div" :style="{ 'width': pageSize.w + 'px', 'height': pageSize.h + 'px'}">
       
       <div class="role-box" @click="doRole" :style="{'width':horseInfo.w+'px','height':horseInfo.h+'px'}" ref="horseRef">
@@ -286,7 +286,8 @@ export default {
       </DefaultDrag> 
     </div>
   </div>
-  <div class="modal-box" v-if="modalInfo.show" :style="{'opacity':isLoad?'0':'1'}">
+  <div class="modal-box" v-if="modalInfo.show">
+    <div class="mask"></div>
     <div class="modal-main">
       <p class="modal-con">{{modalInfo.content}}</p>
       <p class="modal-tips" v-if="modalInfo.toPage">{{modalInfo.tips}}</p>
@@ -298,10 +299,16 @@ export default {
       </div>
     </div>
   </div>
-  <div class="modal-box video-box" v-if="houseInfo.show" :style="{'opacity':isLoad?'0':'1'}">
+  <div class="modal-box video-box" v-if="houseInfo.show">
+    <div class="mask"></div>
     <div class="modal-main">
       <div style="width:100%;height:auto;text-align: center;">
-        <video style="height:300px;max-width: 200px;" src="https://ued.united-imaging.com/event/231024/media_assets/uih-video.mp4" controls="controls" />
+        <!-- <video style="height:300px;max-width: 200px;" src="https://ued.united-imaging.com/event/231024/media_assets/uih-video.mp4" controls="controls" /> -->
+        <video style="height:300px;max-width: 200px;"
+               src="https://ued.united-imaging.com/event/231024/media_assets/uih-video.mp4" 
+               controls x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true" playsinline x5-playsinline>
+          您的浏览器不支持此video，请升级浏览器
+        </video>
       </div>
       <div class="btn-box" style="margin: 10px 0;">
         <div @click="houseInfo.show = false">继续探索</div>
@@ -313,9 +320,14 @@ export default {
 .loading{
   width: 100vw;
   height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9999;
+  background-color: #e3dfd6;
 }
 .view-box{
   width: 100vw;
@@ -590,15 +602,14 @@ export default {
   margin: auto;
   width: 100vw;
   height: 100vh;
-  // background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
 
-  transform: perspective(1);
-  -moz-transform: perspective(1);
-  -o-transform: perspective(1);
-  -webkit-transform: perspective(1);
+  transform: perspective(1000);
+  -moz-transform: perspective(1000);
+  -o-transform: perspective(1000);
+  -webkit-transform: perspective(1000);
 
   .modal-main{
     height:max-content;
@@ -606,6 +617,15 @@ export default {
     background: url('../assets/imgs/modal.png') no-repeat;
     background-size: 100% 100%;
     padding:100px 20%;
+    z-index: 1;
+  }
+  .mask{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
   }
   .modal-con{
     font-size:20px;

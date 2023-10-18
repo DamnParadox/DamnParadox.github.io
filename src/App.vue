@@ -47,6 +47,8 @@ html,body,p{
   font-size: 18px;
   line-height: 1.2;
   font-family: 'MyCustomFont2';
+  -webkit-transform:translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 body{
   background-color: #e3dfd6;
