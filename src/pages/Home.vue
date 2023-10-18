@@ -1,6 +1,6 @@
 <script setup>
 import DefaultDrag from '../components/Drag.vue'
-import {ref, reactive, onMounted} from 'vue'
+import {ref, reactive, onMounted, onUnmounted} from 'vue'
 
 const pageSize = reactive({
   w: 1170,
@@ -183,13 +183,14 @@ const doTail = () =>{
 
 const isLoad = ref(true)
 const loadtime = ref(0);
+let loadTimer = null;
 onMounted(() => {
   
   modalInfo.show = true,
-  modalInfo.content = '啊哈呀！又见面了，爱码仕还依稀记得我们的码场去年被大家各显神通，Bug都被大家找到了。码场主修到现在还没修好,今年就拜托大家帮忙照看一下我们的码场啦，带着小码到处逛逛，探索一下吧'
+  modalInfo.content = '啊哈呀！又见面了，爱码仕还依稀记得我们的码场去年被大家各显神通，Bug都被大家找到了。码场主修到现在还没修好，今年就拜托大家帮忙照看一下我们的码场啦，带着小码到处逛逛，探索一下吧'
   modalInfo.toPage = ''
 
-  const loadTimer = setInterval(() => {
+  loadTimer = setInterval(() => {
     loadtime.value += 2
     if (loadtime.value >= 200) {
       isLoad.value = false
@@ -204,6 +205,12 @@ onMounted(() => {
 
 })
 
+// 页面销毁时清除定时器
+onUnmounted(() => {
+  clearInterval(loadTimer)
+})
+
+
 </script>
 <script>
 export default {
@@ -214,7 +221,7 @@ export default {
   <div class="loading" v-if="isLoad">
     loading...{{ loadtime/2 }}%
   </div>
-  <div class="view-box" ref="viewBox" v-show="!isLoad">
+  <div class="view-box" ref="viewBox" v-show="!isLoad" :style="{'opacity':isLoad?'0':'1'}">
     <div class="main-div" :style="{ 'width': pageSize.w + 'px', 'height': pageSize.h + 'px'}">
       
       <div class="role-box" @click="doRole" :style="{'width':horseInfo.w+'px','height':horseInfo.h+'px'}" ref="horseRef">
@@ -279,7 +286,7 @@ export default {
       </DefaultDrag> 
     </div>
   </div>
-  <div class="modal-box" v-if="modalInfo.show" v-show="!isLoad">
+  <div class="modal-box" v-if="modalInfo.show" :style="{'opacity':isLoad?'0':'1'}">
     <div class="modal-main">
       <p class="modal-con">{{modalInfo.content}}</p>
       <p class="modal-tips" v-if="modalInfo.toPage">{{modalInfo.tips}}</p>
@@ -291,7 +298,7 @@ export default {
       </div>
     </div>
   </div>
-  <div class="modal-box video-box" v-if="houseInfo.show" v-show="!isLoad">
+  <div class="modal-box video-box" v-if="houseInfo.show" :style="{'opacity':isLoad?'0':'1'}">
     <div class="modal-main">
       <div style="width:100%;height:auto;text-align: center;">
         <video style="height:300px;max-width: 200px;" src="https://ued.united-imaging.com/event/231024/media_assets/uih-video.mp4" controls="controls" />
@@ -586,10 +593,16 @@ export default {
   margin: auto;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+  // background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transform: perspective(1);
+  -moz-transform: perspective(1);
+  -o-transform: perspective(1);
+  -webkit-transform: perspective(1);
+
   .modal-main{
     height:max-content;
     width: 100%;

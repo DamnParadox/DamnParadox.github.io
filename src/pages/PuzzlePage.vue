@@ -140,14 +140,14 @@ export default {
   <div class="result-box"  v-if="isWin">
       <div class="card-box">
       <div  class="card-main">
-        <div class="line1">成功</div>
-        <p>拼好了</p>
+        <div class="line1">危机解除</div>
+        <p>在你的努力下，出逃的顽皮小码被成功找回。请截图保存当前页面，凭截图前往前台抽奖，祝你好运哦~</p>
         <br />
-        <p style="text-align: center;">吃饭不积极，思想有问题</p>
+        <p style="text-align: center;">火眼金睛，心细如发</p>
       </div>
     </div>
   </div>
-  <div class="puzzle-main">
+  <div class="puzzle-main" v-else>
     <div class="word-box word1" v-for="(item, i) in data" :key="i" :style="{'left':item.x+'px', 'top':item.y+'px'}">
       <img :src="item.img1">
     </div>
@@ -171,7 +171,7 @@ export default {
     <div class="target-dot" v-for="(item, i) in data.filter(item1 => item1.isPuzzle != 'none')" :key="i" 
     :style="{'backgroundImage': item.isPuzzle == 'no' ? item.puzzlePos.bg1 : item.puzzlePos.bg2, 'width':(item.puzzlePos.x[1] - item.puzzlePos.x[0]) + 'px', 'height':(item.puzzlePos.y[1] - item.puzzlePos.y[0]) + 'px', 'left':item.puzzlePos.x[0] +'px', 'top':item.puzzlePos.y[0] +'px'}"></div>
   </div>
-  </template>
+</template>
 
 <style scoped lang="less">
 .puzzle-main{
@@ -226,12 +226,12 @@ export default {
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: #fff;
+  // background-color: #fff;
   z-index: 9999;
  }
 
  .card-box{
-  width: 100vw;
+  width: 100vw;fff
   height: 100vh;
   display: flex;
   justify-content: center;

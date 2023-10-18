@@ -44,7 +44,9 @@ html,body,p{
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color:rgba(255,255,255,0);
-  line-height: 1.4;
+  font-size: 18px;
+  line-height: 1.2;
+  font-family: 'MyCustomFont2';
 }
 body{
   background-color: #e3dfd6;

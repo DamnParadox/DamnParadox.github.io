@@ -1,14 +1,23 @@
 
 import {createRouter,createWebHashHistory} from 'vue-router'
 
-import HomePage from './pages/Home.vue'
-import BugPage from './pages/BugPage.vue'
-import HelloWorld from './pages/HelloWorld.vue'
-import PuzzlePage from './pages/PuzzlePage.vue'
-import FoodPage from './pages/FoodPage.vue'
-import CaoPage from './pages/CaoPage.vue'
-import IndPage from './pages/IndPage.vue'
-import TimePage from './pages/TimePage.vue'
+// import HomePage from './pages/Home.vue'
+// import BugPage from './pages/BugPage.vue'
+// import HelloWorld from './pages/HelloWorld.vue'
+// import PuzzlePage from './pages/PuzzlePage.vue'
+// import FoodPage from './pages/FoodPage.vue'
+// import CaoPage from './pages/CaoPage.vue'
+// import IndPage from './pages/IndPage.vue'
+// import TimePage from './pages/TimePage.vue'
+
+const  HomePage = import('./pages/Home.vue') 
+const  BugPage = import('./pages/BugPage.vue') 
+const  HelloWorld = import('./pages/HelloWorld.vue') 
+const  PuzzlePage = import('./pages/PuzzlePage.vue') 
+const  FoodPage = import('./pages/FoodPage.vue') 
+const  CaoPage = import('./pages/CaoPage.vue') 
+const  IndPage = import('./pages/IndPage.vue') 
+const  TimePage = import('./pages/TimePage.vue')
 
 const routes = [
   { 
