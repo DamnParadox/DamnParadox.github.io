@@ -1,23 +1,14 @@
 
 import {createRouter,createWebHashHistory} from 'vue-router'
 
-// import HomePage from './pages/Home.vue'
-// import BugPage from './pages/BugPage.vue'
-// import HelloWorld from './pages/HelloWorld.vue'
-// import PuzzlePage from './pages/PuzzlePage.vue'
-// import FoodPage from './pages/FoodPage.vue'
-// import CaoPage from './pages/CaoPage.vue'
-// import IndPage from './pages/IndPage.vue'
-// import TimePage from './pages/TimePage.vue'
-
-const  HomePage = import('./pages/Home.vue') 
-const  BugPage = import('./pages/BugPage.vue') 
-const  HelloWorld = import('./pages/HelloWorld.vue') 
-const  PuzzlePage = import('./pages/PuzzlePage.vue') 
-const  FoodPage = import('./pages/FoodPage.vue') 
-const  CaoPage = import('./pages/CaoPage.vue') 
-const  IndPage = import('./pages/IndPage.vue') 
-const  TimePage = import('./pages/TimePage.vue')
+import HomePage from './pages/Home.vue'
+import BugPage from './pages/BugPage.vue'
+import HelloWorld from './pages/HelloWorld.vue'
+import PuzzlePage from './pages/PuzzlePage.vue'
+import FoodPage from './pages/FoodPage.vue'
+import CaoPage from './pages/CaoPage.vue'
+import IndPage from './pages/IndPage.vue'
+import TimePage from './pages/TimePage.vue'
 
 const routes = [
   { 
@@ -57,7 +48,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  base: process.env.NODE_ENV === 'production'?'/event/231024/':'/',
+  base: process.env.NODE_ENV === 'production'?'./event/231024/':'./',
   routes,
 })
 
@@ -70,8 +61,28 @@ const isFeishu = () => {
   return false;
 }
 
+// 函数：判断当前时间是不是在活动时间内,活动时间2023年10月24日早上8点到晚上11点
+const isNowTime = () => {
+  console.log(process.env.BASE_URL);
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const hour = now.getHours();
+  if (year === 2023 && month === 10 && day === 24 && hour >= 8 && hour <= 23) {
+    return true;
+  }
+  return false;
+}
+
 router.beforeEach((to, from, next) => {
   if (isFeishu()) {
+    if (to.path === '/ind') {
+      next()
+    } else {
+      next('/ind')
+    }
+  } else if (isNowTime()) {
     if (to.path === '/ind') {
       next()
     } else {

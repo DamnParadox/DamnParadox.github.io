@@ -4,7 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin'); // 代码压缩混淆ters
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === 'production'? '/event/231024/':'/', // 基本路径
+  publicPath: process.env.NODE_ENV === 'production'?'/event/231024/':'./', // 基本路径
   productionSourceMap: false, //禁用生产环境的源映射文件
   configureWebpack: (config) => {
     if (process.env.NODE_ENV === 'production') {

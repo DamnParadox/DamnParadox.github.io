@@ -560,9 +560,6 @@ export default {
 }
 
 .overturn {
-  // -webkit-animation: overturn-vertical 0.9s both !important;
-  // animation: overturn-vertical 0.9s both !important;
-  
 	-webkit-animation: overturn-vertical 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both !important;;
   animation: overturn-vertical 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both !important;;
 }
