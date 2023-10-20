@@ -143,8 +143,6 @@ onMounted(() => {
     }    
     el = el.parentElement;    
   }  
-  console.log(dragComp.value);
-  console.log(parentElement,scrollElement);  
 })    
 </script>    
 <script>    

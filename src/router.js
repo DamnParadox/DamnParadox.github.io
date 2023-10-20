@@ -63,7 +63,6 @@ const isFeishu = () => {
 
 // 函数：判断当前时间是不是在活动时间内,活动时间2023年10月24日早上8点到晚上11点
 const isNowTime = () => {
-  console.log(process.env.BASE_URL);
   const now = new Date();
   const year = now.getFullYear();
   const month = now.getMonth() + 1;

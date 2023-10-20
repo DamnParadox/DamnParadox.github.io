@@ -18,6 +18,11 @@ const doTime = () =>{
 }
 
 onMounted(() => {
+  // 禁止长按出现菜单
+  document.body.addEventListener('contextmenu', function(e){
+    e.preventDefault();
+  });
+
   const nowTime = new Date().getTime()
   if (!window.localStorage.getItem('time')) {
     window.localStorage.setItem('time', nowTime)
@@ -52,5 +57,9 @@ html,body,p{
 }
 body{
   background-color: #e3dfd6;
+}
+/* 禁止图片任何事件 */
+img { 
+  pointer-events: none !important; 
 }
 </style>

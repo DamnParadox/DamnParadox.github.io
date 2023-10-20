@@ -8,7 +8,7 @@ const bgstyle = reactive({
 const changeColor = () => {
   if (count.value >= 10) {
     clearInterval(timer);
-    bgstyle.isImg = false;
+    bgstyle.isImg = true;
     return;
   }
   count.value++;
@@ -51,10 +51,10 @@ export default {
   font-size: 20px;
   line-height: 30px;
   width: 60%;
-  height: 400px;
+  height: 300px;
   padding: 0 20%;
   padding-top: 140px;
-  background: url('../assets/imgs/modal.png') no-repeat center center;
+  background: url('../assets/imgs/modal2.png') no-repeat center center;
   background-size: 100% 100%;
   position: absolute;
   left: 0;

@@ -210,6 +210,10 @@ onUnmounted(() => {
   clearInterval(loadTimer)
 })
 
+const doImg = () => {
+  return false;
+}
+
 
 </script>
 <script>
@@ -226,9 +230,9 @@ export default {
       
       <div class="role-box" @click="doRole" :style="{'width':horseInfo.w+'px','height':horseInfo.h+'px'}" ref="horseRef">
         <div class="love">
-          <img src="../assets/imgs/love.png" />
-          <img src="../assets/imgs/love.png" />
-          <img src="../assets/imgs/love.png" />
+          <img src="../assets/imgs/love.png" @click="doImg" />
+          <img src="../assets/imgs/love.png" @click="doImg" />
+          <img src="../assets/imgs/love.png" @click="doImg" />
         </div>
       </div>
       <div class="role-dialog dialog">
@@ -236,45 +240,45 @@ export default {
       </div>
 
       <div class="pool" @click="doPool">
-        <img src="../assets/imgs/egg1.png" />
-        <img src="../assets/imgs/egg2.png" />
-        <img src="../assets/imgs/egg3.png" />
+        <img src="../assets/imgs/egg1.png" @click="doImg" />
+        <img src="../assets/imgs/egg2.png" @click="doImg" />
+        <img src="../assets/imgs/egg3.png" @click="doImg" />
       </div>
       <div class="block block1">
-        <img src="../assets/imgs/block.png" />
+        <img src="../assets/imgs/block.png" @click="doImg" />
       </div>
       <div class="block block2">
-        <img src="../assets/imgs/block.png" />
+        <img src="../assets/imgs/block.png" @click="doImg" />
       </div>
       <div class="grass grass1">
-        <img src="../assets/imgs/grass1.png" />
+        <img src="../assets/imgs/grass1.png" @click="doImg" />
       </div>
       <div class="grass grass2">
-        <img src="../assets/imgs/grass1.png" />
+        <img src="../assets/imgs/grass1.png" @click="doImg" />
       </div>
       <div class="three three1">
-        <img src="../assets/imgs/tree1.png" />
+        <img src="../assets/imgs/tree1.png" @click="doImg" />
       </div>
       <div class="three three2">
-        <img src="../assets/imgs/tree2.png" />
+        <img src="../assets/imgs/tree2.png" @click="doImg" />
       </div>
       <div class="sign" @click="doSign">
-        <img src="../assets/imgs/sign.png" />
+        <img src="../assets/imgs/sign.png" @click="doImg" />
       </div>
       <div class="house" @click="doHouse">
-        <img src="../assets/imgs/house.png" />
+        <img src="../assets/imgs/house.png" @click="doImg" />
       </div>
       <div class="leaf" @click="doLeaf">
-        <img src="../assets/imgs/leaf.png" />
+        <img src="../assets/imgs/leaf.png" @click="doImg" />
       </div>
       <div class="bugbox" @click="doBug" v-if="leafInfo.show">
-        <img src="../assets/imgs/bug.png" />
+        <img src="../assets/imgs/bug.png" @click="doImg" />
       </div>
       <div class="tail" @click="doTail">
-        <img src="../assets/imgs/tail.png" />
+        <img src="../assets/imgs/tail.png" @click="doImg" />
       </div>
       <div class="luobo">
-        <img src="../assets/imgs/luobo.png" />
+        <img src="../assets/imgs/luobo.png" @click="doImg" />
       </div>
       
       <div class="dialog" :style="{'width':dialogInfo.w+'px','height':dialogInfo.h+'px','left':dialogInfo.x+'px','top':dialogInfo.y+'px','opacity':dialogInfo.show?'1':'0'}">
@@ -282,7 +286,7 @@ export default {
       </div>
 
       <DefaultDrag :w="40" :h="35" :x="820" :y="155" @dragend="doCao" class="caocao" :zIndex="0">
-        <img src="../assets/imgs/grass2.png" />
+        <img src="../assets/imgs/grass2.png" @click="doImg" />
       </DefaultDrag> 
     </div>
   </div>
