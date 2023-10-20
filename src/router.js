@@ -48,7 +48,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  base: process.env.NODE_ENV === 'production'?'./event/231024/':'./',
+  base: './',
   routes,
 })
 
